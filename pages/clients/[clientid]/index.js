@@ -12,7 +12,7 @@ const Projects = () => {
             <ul>
                 {projects.map(project => <li key={project}>
                     <Link href={`/clients/${clientid}/${project}`}>{project}</Link>
-                </li>
+                </li> 
             )}                
             </ul>
         </div>
