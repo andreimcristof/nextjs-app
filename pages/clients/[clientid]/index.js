@@ -1,18 +1,29 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const Projects = () => {
     const projects = [ 'testproject 1', 'testproject 2'];
     const router = useRouter();
     const clientid = router.query.clientid;
 
+    const onProjectClick = (projectid) => {
+        router.push({
+            pathname: '/clients/[clientid]/[projectid]',
+            query: {
+                clientid,
+                projectid
+            }
+        })
+    }
+
     return (
         <div>
             <h1>Projects of client {clientid}</h1>
             <ul>
-                {projects.map(project => <li key={project}>
-                    <Link href={`/clients/${clientid}/${project}`}>{project}</Link>
-                </li> 
+                {projects.map(projectid => 
+                    <div key={projectid}>
+                        <button onClick={_ => onProjectClick(projectid)}>{projectid}</button>
+                        <hr></hr>
+                    </div>
             )}                
             </ul>
         </div>
